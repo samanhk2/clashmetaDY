@@ -24,38 +24,22 @@ profile:
 # ==========================================================
 dns:
   enable: true
-  listen: 0.0.0.0:7874
+  cache-algorithm: arc
+  prefer-h3: false
+  use-hosts: true
+  use-system-hosts: true
+  listen: 0.0.0.0:7974
   ipv6: false
-
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - '*.local'
-    - '*.localdomain'
-    - 'localhost'
-    - 'time.*'
-    - 'ntp.*'
-    - 'time.windows.com'
-    - 'time.apple.com'
-    - 'time.cloudflare.com'
-    - 'router.asus.com'
-    - 'routerlogin.net'
-
   default-nameserver:
-  - system
-  - 119.29.29.29
-  - '2402:4e00::'
+  - 119.29.29.29#disable-ipv6=true
+  - 223.5.5.5#disable-ipv6=true
   nameserver:
-  - system
+  - https://doh.pub/dns-query#disable-ipv6=true
+  - https://dns.alidns.com/dns-query#disable-ipv6=true
   proxy-server-nameserver:
   - https://hydrogen1693.com:44443/dns-query/813f820b-8d27-4d48-afcc-e775ece74175
   - https://subprime7404.com:44443/dns-query/813f820b-8d27-4d48-afcc-e775ece74175
   - https://tribunal2944.com/dns-query/813f820b-8d27-4d48-afcc-e775ece74175
-
-  fallback:
-    - tls://1.1.1.1:853
-    - tls://8.8.8.8:853
 
   fallback-filter:
     geoip: true
